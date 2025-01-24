@@ -40,7 +40,7 @@ const SoundButton = () => {
       onClick={handleClick}
       className="whistle-button bg-[#ea384c] hover:bg-red-600 text-white px-8 py-6 rounded-full shadow-lg"
     >
-      🚂 NÖDBROMS
+      NÖDBROMS
     </Button>
   );
 };
