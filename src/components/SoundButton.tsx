@@ -38,9 +38,9 @@ const SoundButton = () => {
   return (
     <Button 
       onClick={handleClick}
-      className="whistle-button bg-[#1a2b3c] hover:bg-[#2a3b4c] text-white px-8 py-6 rounded-full shadow-lg"
+      className="whistle-button bg-[#ea384c] hover:bg-red-600 text-white px-8 py-6 rounded-full shadow-lg"
     >
-      🚂 Blow Train Whistle
+      🚂 NÖDBROMS
     </Button>
   );
 };
