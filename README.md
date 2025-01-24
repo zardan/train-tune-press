@@ -2,7 +2,8 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/491cabe1-f83d-4f6b-b1fc-349d1d8533d6
+**Published Site**: https://train-tune-press.lovable.app/
+**Lovable Project**: https://lovable.dev/projects/491cabe1-f83d-4f6b-b1fc-349d1d8533d6
 
 ## How can I edit this code?
 
