@@ -1,22 +1,45 @@
 import { io } from 'socket.io-client';
 
-// Connect to WebSocket server
-const socket = io('https://train-tune-press.lovable.app');
+// Connect to WebSocket server with explicit configuration
+const socket = io('https://train-tune-press.lovable.app', {
+  path: '/socket.io/',
+  transports: ['websocket', 'polling'],
+  reconnectionAttempts: 5,
+  reconnectionDelay: 1000,
+  timeout: 20000,
+});
 
-// Add connection event listeners
+// Add detailed connection event listeners
 socket.on('connect', () => {
-  console.log('Connected to WebSocket server');
+  console.log('Connected to WebSocket server', socket.id);
 });
 
 socket.on('connect_error', (error) => {
-  console.error('WebSocket connection error:', error);
+  console.error('WebSocket connection error details:', {
+    message: error.message,
+    description: error.description,
+    type: error.type,
+    context: error.context
+  });
 });
 
 socket.on('disconnect', (reason) => {
   console.log('Disconnected from WebSocket server:', reason);
+  if (reason === 'io server disconnect') {
+    // Server initiated disconnect, try reconnecting
+    socket.connect();
+  }
+});
+
+socket.on('error', (error) => {
+  console.error('Socket error:', error);
 });
 
 export const emitWhistle = () => {
+  if (!socket.connected) {
+    console.warn('Socket not connected, attempting to reconnect...');
+    socket.connect();
+  }
   console.log('Emitting train whistle event');
   socket.emit('train-whistle');
 };
