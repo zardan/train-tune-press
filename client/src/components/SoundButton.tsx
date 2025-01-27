@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import { emitWhistle, onWhistle, cleanup } from '@/services/socketService';
 
-const SoundButton = ({username}:{username:string}) => {
+const SoundButton = ({username, onClick}:{username:string, onClick: () => void}) => {
   const [audio] = useState(new Audio('/Dressinen.mp3'));
   const [isPulled, setIsPulled] = useState(false);
   const { toast } = useToast();
@@ -33,6 +33,8 @@ const SoundButton = ({username}:{username:string}) => {
 
   const handleClick = () => {
 
+    onClick();
+
     setIsPulled(true);
     setTimeout(() => setIsPulled(false), 1000);
 
@@ -49,7 +51,7 @@ const SoundButton = ({username}:{username:string}) => {
       <img
         src="/nodbroms.png" // Replace this with the correct path to your image
         alt="Nödbroms"
-        style={{ width: 490, height: 350 }} // Adjust as necessary
+        style={{ width: 500}} // Adjust as necessary
       />
     </Button>
   );
