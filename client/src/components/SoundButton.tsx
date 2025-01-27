@@ -4,7 +4,8 @@ import { useToast } from '@/components/ui/use-toast';
 import { emitWhistle, onWhistle, cleanup } from '@/services/socketService';
 
 const SoundButton = ({username}:{username:string}) => {
-  const [audio] = useState(new Audio('/train-whistle.mp3'));
+  const [audio] = useState(new Audio('/Dressinen.mp3'));
+  const [isPulled, setIsPulled] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -31,6 +32,10 @@ const SoundButton = ({username}:{username:string}) => {
   };
 
   const handleClick = () => {
+
+    setIsPulled(true);
+    setTimeout(() => setIsPulled(false), 1000);
+
     playSound();
     emitWhistle(username); // Emit event to other users
   };
@@ -38,9 +43,14 @@ const SoundButton = ({username}:{username:string}) => {
   return (
     <Button 
       onClick={handleClick}
-      className="whistle-button bg-[#ea384c] hover:bg-red-600 text-white px-8 py-6 rounded-full shadow-lg"
+      //className="whistle-button bg-[#ea384c] hover:bg-red-600 text-center text-white px-8 py-6 rounded-full shadow-lg"
+      className={"whistle-button bg-transparent hover:bg-transparent mt-20 p-10 " + (isPulled ? 'translate-y-10' : '')}
     >
-      NÖDBROMS
+      <img
+        src="/nodbroms.png" // Replace this with the correct path to your image
+        alt="Nödbroms"
+        style={{ width: 490, height: 350 }} // Adjust as necessary
+      />
     </Button>
   );
 };
