@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client';
 
 // Connect to WebSocket server with explicit configuration
-const socket = io('https://train-tune-press.lovable.app', {
+const socket = io('/', {
   path: '/socket.io/',
   transports: ['websocket', 'polling'],
   reconnectionAttempts: 5,
@@ -34,13 +34,13 @@ socket.on('error', (error) => {
   console.error('Socket error:', error);
 });
 
-export const emitWhistle = () => {
+export const emitWhistle = (username:string) => {
   if (!socket.connected) {
     console.warn('Socket not connected, attempting to reconnect...');
     socket.connect();
   }
   console.log('Emitting train whistle event');
-  socket.emit('train-whistle');
+  socket.emit('train-whistle', {username});
 };
 
 export const onWhistle = (callback: () => void) => {

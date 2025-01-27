@@ -1,0 +1,19 @@
+{
+    "name": "websocket-button-app",
+    "version": "1.0.0",
+    "description": "A Node.js backend serving WebSocket and static files for a button press app.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.21.2",
+        "socket.io": "^4.8.1"
+    },
+    "engines": {
+        "node": ">=16"
+    }
+}

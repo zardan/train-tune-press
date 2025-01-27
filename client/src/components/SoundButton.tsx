@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import { emitWhistle, onWhistle, cleanup } from '@/services/socketService';
 
-const SoundButton = () => {
+const SoundButton = ({username}:{username:string}) => {
   const [audio] = useState(new Audio('/train-whistle.mp3'));
   const { toast } = useToast();
 
@@ -32,7 +32,7 @@ const SoundButton = () => {
 
   const handleClick = () => {
     playSound();
-    emitWhistle(); // Emit event to other users
+    emitWhistle(username); // Emit event to other users
   };
 
   return (
