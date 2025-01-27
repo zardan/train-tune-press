@@ -17,9 +17,8 @@ socket.on('connect', () => {
 socket.on('connect_error', (error) => {
   console.error('WebSocket connection error details:', {
     message: error.message,
-    description: error.description,
-    type: error.type,
-    context: error.context
+    name: error.name,
+    stack: error.stack
   });
 });
 
