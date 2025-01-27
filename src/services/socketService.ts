@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client';
 
 // Connect to WebSocket server
-const socket = io('wss://train-tune.gpteng.co');
+const socket = io('wss://train-tune-press.lovable.app');
 
 // Add connection event listeners
 socket.on('connect', () => {
