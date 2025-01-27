@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client';
 
 // Connect to WebSocket server
-const socket = io('wss://train-tune-press.gpteng.co');
+const socket = io('wss://train-tune.gpteng.co');
 
 export const emitWhistle = () => {
   socket.emit('train-whistle');
